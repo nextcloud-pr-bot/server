@@ -76,12 +76,14 @@ class MigrateKeyStorage extends Command {
 			->setDescription('Migrate the format of the keystorage to a newer format');
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output) {
+	protected function execute(InputInterface $input, OutputInterface $output): int {
 		$root = $this->util->getKeyStorageRoot();
 
 		$output->writeln("Updating key storage format");
 		$this->updateKeys($root, $output);
 		$output->writeln("Key storage format successfully updated");
+
+		return 0;
 	}
 
 	/**
